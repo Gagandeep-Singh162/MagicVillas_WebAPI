@@ -25,6 +25,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<Ilogging, Logging>();
 builder.Services.AddScoped<IVillaRepository, VillaRepository>();
+builder.Services.AddScoped<IVillaNumberRepository, VillaNumberRepository>();
 
 var app = builder.Build();
 
