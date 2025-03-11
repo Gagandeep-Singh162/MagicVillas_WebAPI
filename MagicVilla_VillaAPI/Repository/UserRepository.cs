@@ -3,6 +3,7 @@ using MagicVilla_VillaAPI.Models;
 using MagicVilla_VillaAPI.Models.Dto;
 using MagicVilla_VillaAPI.Repository.IRepository;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -34,7 +35,11 @@ namespace MagicVilla_VillaAPI.Repository
 
             if (user == null)
             {
-                return null;
+                return new()
+                {
+                    Token = "",
+                    User = null
+                };
             }
             else
             {
