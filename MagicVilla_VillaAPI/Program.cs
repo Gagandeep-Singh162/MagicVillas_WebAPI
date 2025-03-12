@@ -1,10 +1,13 @@
 using MagicVilla_VillaAPI;
 using MagicVilla_VillaAPI.Data;
 using MagicVilla_VillaAPI.log.Logging;
+using MagicVilla_VillaAPI.Models;
 using MagicVilla_VillaAPI.Repository;
 using MagicVilla_VillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
@@ -16,6 +19,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
 });
 
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddResponseCaching();
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 // Add services to the container.
 Log.Logger = new LoggerConfiguration().MinimumLevel.Debug()
@@ -23,7 +29,13 @@ Log.Logger = new LoggerConfiguration().MinimumLevel.Debug()
 
 builder.Host.UseSerilog();
 
-builder.Services.AddControllers().AddNewtonsoftJson();
+builder.Services.AddControllers(o =>
+{
+    o.CacheProfiles.Add("Default30", new Microsoft.AspNetCore.Mvc.CacheProfile()
+    {
+        Duration = 30,
+    });
+}).AddNewtonsoftJson();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(o =>
