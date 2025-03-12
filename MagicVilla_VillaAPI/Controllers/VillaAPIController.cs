@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Asp.Versioning;
+using AutoMapper;
 using MagicVilla_VillaAPI.Data;
 using MagicVilla_VillaAPI.log.Logging;
 using MagicVilla_VillaAPI.Models;
@@ -57,6 +58,7 @@ namespace MagicVilla_VillaAPI.Controllers
         [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest)]
         [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
         [ProducesResponseType(statusCode: StatusCodes.Status401Unauthorized)]
+        [ApiVersion("2.0")]
         public async Task<ActionResult<APIResponse>> GetVilla(int id)
         {
             try

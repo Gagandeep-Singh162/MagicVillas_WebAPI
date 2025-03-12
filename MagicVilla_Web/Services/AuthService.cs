@@ -25,7 +25,7 @@ namespace MagicVilla_Web.Services
             });
         }
 
-        public Task<T> RegisterAsync<T>(UserDto obj)
+        public Task<T> RegisterAsync<T>(RegisterationRequestDto obj)
         {
             return SendAsync<T>(new ApiRequest()
             {
