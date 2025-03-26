@@ -36,6 +36,6 @@ To run this project locally, you’ll need:
 
 2. **Set Up the Database:**
    ```bash
- - Update the connection string in appsettings.json to point to your SQL Server instance.
- - Run this command in the Package Manager Console to apply migrations:
+  Update the connection string in appsettings.json to point to your SQL Server instance.
+  Run this command in the Package Manager Console to apply migrations:
 
