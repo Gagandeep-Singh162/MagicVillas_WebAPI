@@ -22,7 +22,7 @@ I’m not done yet! I’m planning to:
 
 To run this project locally, you’ll need:
 - **C# Experience**: I’ve been coding in C# for about 6 months, so some basics are handy.
-- **ASP.NET Core Knowledge**: A few months of .NET Core experience helps (I had 3-6 months coming into this).
+- **ASP.NET Core Knowledge**: A few months of .NET Core experience helps.
 - **Visual Studio 2022**: My IDE of choice for this project.
 - **SQL Server 2018**: For the database (managed via SQL Server Management Studio).
 - **.NET 7 SDK**: Make sure you’ve got the right SDK installed.
